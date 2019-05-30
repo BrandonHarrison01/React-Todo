@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './components/TodoComponents/Todo.css'
+
 import TodoList from './components/TodoComponents/TodoList'
 import TodoForm from './components/TodoComponents/TodoForm'
 // import { threadId } from 'worker_threads';
