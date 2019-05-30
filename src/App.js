@@ -2,6 +2,7 @@ import React from 'react';
 
 import TodoList from './components/TodoComponents/TodoList'
 import TodoForm from './components/TodoComponents/TodoForm'
+// import { threadId } from 'worker_threads';
 // import Todo from './components/TodoComponents/Todo'
 
 class App extends React.Component {
@@ -44,6 +45,23 @@ class App extends React.Component {
     });
   };
 
+  toggleItem = (id) => {
+    this.setState((prevState) => {
+      return {
+        tasks: prevState.tasks.map(item => {
+          if (item.id === id) {
+            return {
+              ...item,
+              completed: !item.completed
+            };
+          } else {
+            return item;
+          }
+        })
+      }
+    })
+  }
+
   clearCompleted = (e) => {
     e.preventDefault();
     this.setState({
@@ -55,7 +73,7 @@ class App extends React.Component {
     return (
       <div>
         <h2>Todo List</h2>
-        <TodoList tasks={this.state.tasks} />
+        <TodoList tasks={this.state.tasks} toggleItem={this.toggleItem}/>
         <TodoForm taskInput={this.state.taskInput} changeHandler={this.changeHandler} addTask={this.addTask} clearCompleted={this.clearCompleted}/>
       </div>
     );
