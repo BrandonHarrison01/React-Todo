@@ -1,11 +1,9 @@
 import React from 'react';
 
-const TodoList = (props) => {
-    return(
-        <div className='TodoItem'>
-            <p>{props.item.task}</p>
-        </div>
-    )
+import Todo from './Todo';
+
+function TodoList(props) {
+    return <div>{props.tasks.map(task => <Todo task={task} />)}</div>;
 }
 
 export default TodoList
